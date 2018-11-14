@@ -69,5 +69,12 @@ end
 
 
 if __FILE__ == $0
-    
+    vm = ZhyVirt.new()
+    vm.zhyStatus()
+    puts @@message
+    input = gets
+    vm.zhyStatus(input)
+    puts @@message
+    vm.zhyDomInfo(input)
+    puts @@message
 end
