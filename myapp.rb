@@ -2,8 +2,6 @@
 require 'active_record'
 require 'mysql2'
 require 'sinatra'
-#require 'bundler'
-#Bundler.require
 #require 'rss'
 
 # DB設定ファイルの読み込み
@@ -15,19 +13,15 @@ class User < ActiveRecord::Base
 end
 
 # 最新トピック10件分を取得
-get '/user.json' do
-  content_type :json, :charset => 'utf-8'
-  topics = User.order("created_at DESC").limit(10)
-  topics.to_json(:root => false)
-end
+#get '/user.json' do
+#  content_type :json, :charset => 'utf-8'
+#  topics = User.order("created_at DESC").limit(10)
+#  topics.to_json(:root => false)
+#end
 
 # トピック投稿
 post '/user' do
   # リクエスト解析
-#  reqData = JSON.parse(request.body.read.to_s) 
-#  name = reqData['name']
-#  mail = reqData['mail']
-#  description = reqData['description']
   name = params[:name]
   mail = params[:mail]
   description = params[:description]
@@ -39,9 +33,30 @@ post '/user' do
   user.save
 
   # レスポンスコード
-  status 202  
+#  status 202  
+  erb :login
 end
 
 get "/" do
-    erb :zhyMain
+    erb :index
+end
+
+get '/login' do
+    erb :login
+end
+
+post '/login' do
+   uname = params[:uname]
+   user = User.where(:name => uname).first
+   if user == nil 
+       erb :logon
+   else
+       @@name = user.name
+       @@mail = user.mail
+       erb :zhyMenu
+   end
+end
+
+get '/logon' do
+  erb :logon
 end
