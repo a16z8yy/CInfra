@@ -23,9 +23,12 @@ class ZhyVirt
             out = ret[1]
             out.each_line do |ln|
                 if ln.split.include?(vm)
-                    return ln
+                    return ["OK", ln]
                 end
             end
+            return ["Err", vm + ": not found!"]
+        else
+            return ret
         end
     end
     
@@ -69,10 +72,10 @@ end
 if __FILE__ == $0
     vm = ZhyVirt.new()
     vm.zhyStatus()
-    puts @@message
-    input = gets
-    vm.zhyStatus(input)
-    puts @@message
+    puts ret[0], ret[1]
+    input = "kvm_centos7-2"
+    vm.zhyStatusSpec(input)
+    puts ret[0], ret[1]
     vm.zhyDomInfo(input)
-    puts @@message
+    puts ret[0], ret[1]
 end
