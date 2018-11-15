@@ -73,9 +73,37 @@ if __FILE__ == $0
     vm = ZhyVirt.new()
     vm.zhyStatus()
     puts ret[0], ret[1]
-    input = "kvm_centos7-2"
+    puts "Enter vm name: "
+    input = gets.strip
     vm.zhyStatusSpec(input)
     puts ret[0], ret[1]
-    vm.zhyDomInfo(input)
-    puts ret[0], ret[1]
+    
+    i = ""
+    while i != "0"
+        puts "Input cmd: "
+        puts "1. dominfo     2. suspend    3. resume"
+        puts "4. shutdown    5. start      6. reboot"
+        puts "7. destroy     0. quit"
+        i = gets.split
+        puts "Input vm name: "
+        input = gets.strip
+        if i == "1"
+            ret = zhyDomInfo(input)
+        elsif i == "2"
+            ret = zhySuspend(input)
+        elsif i == "3"
+            ret = zhyResume(input)
+        elsif i == "4"
+            ret = zhyShutdown(input)
+        elsif i == "5"
+            ret = zhyStart(input)
+        elsif i == "6"
+            ret = zhyReboot(input)
+        elsif i == "7"
+            ret = zhyDestroy(input)
+        else
+            puts "key in 1..9"
+        end
+        puts ret[0], ret[1]
+    end
 end
