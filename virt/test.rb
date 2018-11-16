@@ -1,7 +1,7 @@
 require './zhy_virt'
 
 vm = ZhyVirt.new()
-vm.zhyStatusList()
+ret = vm.zhyStatusList()
 puts "Center status:"
 puts ret[0], ret[1]
 
@@ -13,7 +13,7 @@ while i != "0"
     puts "1. dominfo     2. suspend    3. resume"
     puts "4. shutdown    5. start      6. reboot"
     puts "7. destroy     8. status     0. quit"
-    i = gets.split
+    i = gets.strip
     if i == "1"
         ret = vm.zhyDomInfo(input)
     elsif i == "2"
