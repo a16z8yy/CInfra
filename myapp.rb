@@ -49,14 +49,70 @@ post '/login' do
    uname = params[:uname]
    user = User.where(:name => uname).first
    if user == nil 
-       erb :logon
+       erb :signin
    else
-       @@name = user.name
-       @@mail = user.mail
+       @@uname = user.name
+       @@content = ""
        erb :zhyMenu
    end
 end
 
-get '/logon' do
-  erb :logon
+get '/Signin' do
+  erb :signin
+end
+
+get '/statusList' do
+    
+end
+
+post '/statusList' do
+
+end
+
+get '/statusSpec' do
+end
+
+post '/statusSpec' do
+end
+
+get '/dominfo' do
+end
+
+post '/dominfo' do
+end
+
+get '/suspend' do
+end
+
+post '/suspend' do
+end
+
+get '/resume' do 
+end
+
+post '/resume' do 
+end
+
+get '/shutdown' do
+end
+
+post '/shutdown' do
+end
+
+get '/start' do
+end
+
+post '/start' do
+end
+
+get '/reboot' do
+end
+
+post '/reboot' do
+end
+
+get '/destroy' do
+end
+
+post '/destroy' do
 end

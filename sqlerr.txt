@@ -1,0 +1,2 @@
+sudo touch /var/lib/mysql/mysql.sock
+sudo /etc/rc.d/init.d/mysqld start

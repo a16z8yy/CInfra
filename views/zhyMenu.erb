@@ -1,5 +1,34 @@
-<ul>
-    <li>Welcome to Zhy Cloud System.</li>
-    <li>user: <%= @@name %></li>
-    <li>Main Menu:</li>
-</ul>
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+        <ul>
+            <li>user: <%= @@uname %></li>
+            <li>Main Menu:</li>
+                <ol><a href="/statusList">VM list/status</a></ol>
+                <ol><a href="/statusSpec">VM Status</a></ol>
+                <ol><a href="/dominfo">Domain Information</a></ol>
+            <li>VM Operation</li>
+                <ol><a href="/suspend">VM Suspend</a></ol>
+                <ol><a href="/resume">VM Resume</a></ol>
+                <ol><a href="/shutdown">VM Shutdown</a></ol>
+                <ol><a href="/start">VM Start</a></ol>
+                <ol><a href="/reboot">VM Reboot</a></ol>
+                <ol><a href="/destroy">VM Destroy</a></ol>
+        </ul>    
+        </div>
+        <%# ---------------- %>
+        <aside class="col-md-4">
+            <section class="stats">
+                <% if @@content == "statusList" %>
+                <%    @@message = "Status List ...." %>
+                <%=   erb :zhyStatusList %>
+                <% elsif @@content == "statusSpec" %>
+                <%    @@message = "Status Spec ...." %>
+                <%=   erb :zhyStatusSpec %>
+                <% else %>
+                <%=  "Welcome to ZhyCloud system!" %>
+                <% end %>
+            </section>
+        </aside>
+    </div>
+</div>

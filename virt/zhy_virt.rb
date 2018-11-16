@@ -11,12 +11,12 @@ class ZhyVirt
         end
     end
     
-    def zhyStatus()
+    def zhyStatusList()
         cmd = "virsh --connect=qemu:///system list --all"
         return virCmd(cmd)
     end
     
-    def zhyStatusSpec(vm)
+    def zhyStatusVM(vm)
         cmd = "virsh --connect=qemu:///system list --all"
         ret = virCmd(cmd)
         if ret[0] != ""
@@ -43,27 +43,27 @@ class ZhyVirt
     end
     
     def zhyResume(vm)
-        cmd = "virsh --connect=qemu:///system resume" + vm
+        cmd = "virsh --connect=qemu:///system resume " + vm
         return virCmd(cmd)
     end
     
     def zhyShutdown(vm)
-        cmd = "virsh --connect=qemu:///system shutdown" + vm
+        cmd = "virsh --connect=qemu:///system shutdown " + vm
         return virCmd(cmd)
     end
     
     def zhyStart(vm)
-        cmd = "virsh --connect=qemu:///system start" + vm
+        cmd = "virsh --connect=qemu:///system start " + vm
         return virCmd(cmd)
     end
     
     def zhyReboot(vm)
-        cmd = "virsh --connect=qemu:///system reboot" + vm
+        cmd = "virsh --connect=qemu:///system reboot " + vm
         return virCmd(cmd)
     end
     
     def zhyDestroy(vm)
-        cmd = "virsh --connect=qemu:///system destroy" + vm
+        cmd = "virsh --connect=qemu:///system destroy " + vm
         return virCmd(cmd)
     end
 end
@@ -71,7 +71,7 @@ end
 
 if __FILE__ == $0
     vm = ZhyVirt.new()
-    vm.zhyStatus()
+    vm.zhyStatusList()
     puts "Center status:"
     puts ret[0], ret[1]
 
@@ -99,7 +99,7 @@ if __FILE__ == $0
         elsif i == "7"
             ret = vm.zhyDestroy(input)
         elsif i == "8"
-            ret = vm.zhyStatusSpec(input)
+            ret = vm.zhyStatusVM(input)
         else
             puts "key in 1..9"
         end

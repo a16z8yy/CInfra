@@ -8,11 +8,18 @@ get '/login' do
     erb :login
 end
 
+
+
 post '/login' do
-   @uname = params[:uname]
-   if @uname == "yyamakawa"
-       erb :zhyMain
+   @@menu = "1. dominfo     2. suspend    3. resume"
+   @@uname = params[:uname]
+   if @@uname == "yyamakawa"
+       @@content = "statusList"
+       @@message = "statusList ...."
+       erb :zhyMenu
    else
-       erb :login
+       @@content = ""
+       @@message = "statusSpec ...."
+       erb :zhyMenu
    end     
 end
