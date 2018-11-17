@@ -104,7 +104,7 @@ get '/suspend' do
 end
 
 post '/suspend' do
-    dname = params[:domName].strip
+    dname = params[:domName]
     vm = ZhyVirt.new()
     ret = vm.zhySuspend(dname)
     @@content = ["post", "suspend"]
@@ -118,7 +118,7 @@ get '/resume' do
 end
 
 post '/resume' do 
-    dname = params[:domName].strip
+    dname = params[:domName]
     vm = ZhyVirt.new()
     ret = vm.zhyResume(dname)
     @@content = ["post", "resume"]
@@ -132,7 +132,7 @@ get '/shutdown' do
 end
 
 post '/shutdown' do
-    dname = params[:domName].strip
+    dname = params[:domName]
     vm = ZhyVirt.new()
     ret = vm.zhyShutdown(dname)
     @@content = ["post", "shutdown"]
@@ -146,7 +146,7 @@ get '/start' do
 end
 
 post '/start' do
-    dname = params[:domName].strip
+    dname = params[:domName]
     vm = ZhyVirt.new()
     ret = vm.zhyStart(dname)
     @@content = ["post", "start"]
