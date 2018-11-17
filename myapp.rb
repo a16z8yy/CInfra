@@ -63,7 +63,10 @@ get '/Signin' do
 end
 
 get '/statusList' do
-    
+    vm = ZhyVirt.new()
+    ret = vm.zhyStatusList()
+    @@message = ret[0] + "\n" + ret[1]
+    erb :zhyMenu
 end
 
 post '/statusList' do

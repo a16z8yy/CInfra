@@ -71,7 +71,7 @@ end
 
 if __FILE__ == $0
     vm = ZhyVirt.new()
-    vm.zhyStatusList()
+    ret = vm.zhyStatusList()
     puts "Center status:"
     puts ret[0], ret[1]
 
