@@ -21,7 +21,7 @@
             <section class="stats">
                 <% if @@content[0] == "get" %>
                 <%=   :erb zhyGet %>
-                <% elsif @@content == "post" %>
+                <% elsif @@content[0] == "post" %>
                 <%    @@message = "Status Spec ...." %>
                 <%=   :erb zhyPost %>
                 <% else %>
