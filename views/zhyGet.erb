@@ -2,29 +2,21 @@
 <% if @@content[1] == "statusList" %>
 <%=   "Warning: Welcome to ZhyCloud system!" %>
 <% elsif @@content[1] == "statusSpec" %>
-<%    @@actionForm = '<form method="POST" action="/statusSpec">'
-<%=   erb :zhyGetDomName %>
+<%=   erb :zhyGetStatusSpec %>
 <% elsif @@content[1] == "dominfo" %>
-<%    @@actionForm = '<form method="POST" action="/dominfo">'
-<%=   erb :zhyGetDomName %>
+<%=   erb :zhyGet %>
 <% elsif @@content[1] == "suspend" %>
-<%    @@actionForm = '<form method="POST" action="/suspend">'
-<%=   erb :zhyGetDomName %>
+<%=   erb :zhyGetSuspend %>
 <% elsif @@content[1] == "resume" %>
-<%    @@actionForm = '<form method="POST" action="/resume">'
-<%=   erb :zhyGetDomName %>
+<%=   erb :zhyGetResume %>
 <% elsif @@content[1] == "shutdown" %>
-<%    @@actionForm = '<form method="POST" action="/shutdown">'
-<%=   erb :zhyGetDomName %>
+<%=   erb :zhyGetShutdown %>
 <% elsif @@content[1] == "start" %>
-<%    @@actionForm = '<form method="POST" action="/start">'
-<%=   erb :zhyGetDomName %>
+<%=   erb :zhyGetStart %>
 <% elsif @@content[1] == "reboot" %>
-<%    @@actionForm = '<form method="POST" action="/reboot">'
-<%=   erb :zhyGetDomName %>
+<%=   erb :zhyGetReboot %>
 <% elsif @@content[1] == "destroy" %>
-<%    @@actionForm = '<form method="POST" action="/destroy">'
-<%=   erb :zhyGetDomName %>
+<%=   erb :zhyGetDestroy %>
 <% else %>
 <%=  "Welcome to ZhyCloud system!" %>
 <% end %>
