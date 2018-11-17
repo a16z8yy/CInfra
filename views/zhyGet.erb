@@ -1,29 +1,29 @@
-<% @@content[0] = "get" %>
+<% @@content[0] = "" %>
 <% if @@content[1] == "statusList" %>
 <%=   "Warning: Welcome to ZhyCloud system!" %>
 <% elsif @@content[1] == "statusSpec" %>
-<%    @@actionForm = "<form method=\"POST\" action=\"/statusSpec\">\""
+<%    @@actionForm = '<form method="POST" action="/statusSpec">'
 <%=   erb :zhyGetDomName %>
 <% elsif @@content[1] == "dominfo" %>
-<%    @@actionForm = "<form method=\"POST\" action=\"/dominfo\">\""
+<%    @@actionForm = '<form method="POST" action="/dominfo">'
 <%=   erb :zhyGetDomName %>
 <% elsif @@content[1] == "suspend" %>
-<%    @@actionForm = "<form method=\"POST\" action=\"/suspend\">\""
+<%    @@actionForm = '<form method="POST" action="/suspend">'
 <%=   erb :zhyGetDomName %>
 <% elsif @@content[1] == "resume" %>
-<%    @@actionForm = "<form method=\"POST\" action=\"/resume\">\""
+<%    @@actionForm = '<form method="POST" action="/resume">'
 <%=   erb :zhyGetDomName %>
 <% elsif @@content[1] == "shutdown" %>
-<%    @@actionForm = "<form method=\"POST\" action=\"/shutdown\">\""
+<%    @@actionForm = '<form method="POST" action="/shutdown">'
 <%=   erb :zhyGetDomName %>
 <% elsif @@content[1] == "start" %>
-<%    @@actionForm = "<form method=\"POST\" action=\"/start\">\""
+<%    @@actionForm = '<form method="POST" action="/start">'
 <%=   erb :zhyGetDomName %>
 <% elsif @@content[1] == "reboot" %>
-<%    @@actionForm = "<form method=\"POST\" action=\"/reboot\">\""
+<%    @@actionForm = '<form method="POST" action="/reboot">'
 <%=   erb :zhyGetDomName %>
 <% elsif @@content[1] == "destroy" %>
-<%    @@actionForm = "<form method=\"POST\" action=\"/destroy\">\""
+<%    @@actionForm = '<form method="POST" action="/destroy">'
 <%=   erb :zhyGetDomName %>
 <% else %>
 <%=  "Welcome to ZhyCloud system!" %>
