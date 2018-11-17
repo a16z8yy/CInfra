@@ -65,6 +65,7 @@ end
 get '/statusList' do
     vm = ZhyVirt.new()
     ret = vm.zhyStatusList()
+    @@content == "statusList"
     @@message = ret[0] + "\n" + ret[1]
     erb :zhyMenu
 end
