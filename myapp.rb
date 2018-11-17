@@ -53,7 +53,7 @@ post '/login' do
        erb :signin
    else
        @@uname = user.name
-       @@content = ""
+       @@content = ["", ""]
        erb :zhyMenu
    end
 end
