@@ -3,6 +3,7 @@ require 'active_record'
 require 'mysql2'
 require 'sinatra'
 #require 'rss'
+require './virt/zhy_virt'
 
 # DB設定ファイルの読み込み
 ActiveRecord::Base.configurations = YAML.load_file('database.yml')
