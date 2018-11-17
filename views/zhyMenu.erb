@@ -20,10 +20,10 @@
         <aside class="col-md-4">
             <section class="stats">
                 <% if @@content[0] == "get" %>
-                <%=   :erb zhyGet %>
+                <%=   erb :zhyGet %>
                 <% elsif @@content[0] == "post" %>
                 <%    @@message = "Status Spec ...." %>
-                <%=   :erb zhyPost %>
+                <%=   erb :zhyPost %>
                 <% else %>
                 <%=  "Welcome to ZhyCloud system!" %>
                 <% end %>
