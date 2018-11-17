@@ -76,7 +76,7 @@ get '/statusSpec' do
 end
 
 post '/statusSpec' do
-    dname = params[:domName].strip
+    dname = params[:domName]
     vm = ZhyVirt.new()
     ret = vm.zhyStatusVM(dname)
     @@content = ["post", "statusSpec"]
@@ -90,7 +90,7 @@ get '/dominfo' do
 end
 
 post '/dominfo' do
-    dname = params[:domName].strip
+    dname = params[:domName]
     vm = ZhyVirt.new()
     ret = vm.zhyDomInfo(dname)
     @@content = ["post", "dominfo"]
