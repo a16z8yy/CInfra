@@ -26,7 +26,7 @@ class ZhyVirt
                     return ["OK", ln]
                 end
             end
-            return ["Err", vm + ": not found!"]
+            return ["Err", ": not found!"]
         else
             return ret
         end
@@ -83,7 +83,7 @@ if __FILE__ == $0
         puts "1. dominfo     2. suspend    3. resume"
         puts "4. shutdown    5. start      6. reboot"
         puts "7. destroy     8. status     0. quit"
-        i = gets.split
+        i = gets.strip
         if i == "1"
             ret = vm.zhyDomInfo(input)
         elsif i == "2"
