@@ -76,46 +76,108 @@ get '/statusSpec' do
 end
 
 post '/statusSpec' do
+    dname = params[:domName]
+    vm = ZhyVirt.new()
+    ret = vm.zhyStatusVM(dname)
+    @@content = ["post", "statusSpec"]
+    @mmesage = ret[0] + "\n" + ret[1]
+    erb :zhyMenu
 end
 
 get '/dominfo' do
+    @@content = ["get", "dominfo"]
+    erb :zhyMenu
 end
 
 post '/dominfo' do
+    dname = params[:domName]
+    vm = ZhyVirt.new()
+    ret = vm.zhyDomInfo(dname)
+    @@content = ["post", "dominfo"]
+    @mmesage = ret[0] + "\n" + ret[1]
+    erb :zhyMenu
 end
 
 get '/suspend' do
+    @@content = ["get", "suspend"]
+    erb :zhyMenu
 end
 
 post '/suspend' do
+    dname = params[:domName]
+    vm = ZhyVirt.new()
+    ret = vm.zhySuspend(dname)
+    @@content = ["post", "suspend"]
+    @mmesage = ret[0] + "\n" + ret[1]
+    erb :zhyMenu
 end
 
 get '/resume' do 
+    @@content = ["get", "resume"]
+    erb :zhyMenu
 end
 
 post '/resume' do 
+    dname = params[:domName]
+    vm = ZhyVirt.new()
+    ret = vm.zhyResume(dname)
+    @@content = ["post", "resume"]
+    @mmesage = ret[0] + "\n" + ret[1]
+    erb :zhyMenu
 end
 
 get '/shutdown' do
+    @@content = ["get", "shutdown"]
+    erb :zhyMenu
 end
 
 post '/shutdown' do
+    dname = params[:domName]
+    vm = ZhyVirt.new()
+    ret = vm.zhyShutdown(dname)
+    @@content = ["post", "shutdown"]
+    @mmesage = ret[0] + "\n" + ret[1]
+    erb :zhyMenu
 end
 
 get '/start' do
+    @@content = ["get", "start"]
+    erb :zhyMenu
 end
 
 post '/start' do
+    dname = params[:domName]
+    vm = ZhyVirt.new()
+    ret = vm.zhyStart(dname)
+    @@content = ["post", "start"]
+    @mmesage = ret[0] + "\n" + ret[1]
+    erb :zhyMenu
 end
 
 get '/reboot' do
+    @@content = ["get", "reboot"]
+    erb :zhyMenu
 end
 
 post '/reboot' do
+    dname = params[:domName]
+    vm = ZhyVirt.new()
+    ret = vm.zhyReboot(dname)
+    @@content = ["post", "reboot"]
+    @mmesage = ret[0] + "\n" + ret[1]
+    erb :zhyMenu
 end
 
 get '/destroy' do
+    @@content = ["get", "destroy"]
+    erb :zhyMenu
 end
 
 post '/destroy' do
+    dname = params[:domName]
+    vm = ZhyVirt.new()
+    ret = vm.zhyDestroy(dname)
+    @@content = ["post", "destroy"]
+    @mmesage = ret[0] + "\n" + ret[1]
+    erb :zhyMenu
 end

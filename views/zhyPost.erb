@@ -2,8 +2,21 @@
 <% if @@content[1] == "statusList" %>
 <%=   erb :zhyStatusList %>
 <% elsif @@content[1] == "statusSpec" %>
-<%    @@message = "Status Spec ...." %>
-<%=   erb :zhyStatusSpec %>
+<%=   erb :zhyReturnMsg %>
+<% elsif @@content[1] == "dominfo" %>
+<%=   erb :zhyReturnMsg %>
+<% elsif @@content[1] == "suspend" %>
+<%=   erb :zhyReturnMsg %>
+<% elsif @@content[1] == "resume" %>
+<%=   erb :zhyReturnMsg %>
+<% elsif @@content[1] == "shutdown" %>
+<%=   erb :zhyReturnMsg %>
+<% elsif @@content[1] == "start" %>
+<%=   erb :zhyReturnMsg %>
+<% elsif @@content[1] == "reboot" %>
+<%=   erb :zhyReturnMsg %>
+<% elsif @@content[1] == "destroy" %>
+<%=   erb :zhyReturnMsg %>
 <% else %>
 <%=  "Welcome to ZhyCloud system!" %>
 <% end %>
