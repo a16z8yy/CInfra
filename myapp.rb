@@ -80,7 +80,7 @@ post '/statusSpec' do
     vm = ZhyVirt.new()
     ret = vm.zhyStatusVM(dname)
     @@content = ["post", "statusSpec"]
-    @mmesage = ret[0] + "\n" + ret[1]
+    @@message = ret[0] + "\n" + ret[1]
     erb :zhyMenu
 end
 
@@ -94,7 +94,7 @@ post '/dominfo' do
     vm = ZhyVirt.new()
     ret = vm.zhyDomInfo(dname)
     @@content = ["post", "dominfo"]
-    @mmesage = ret[0] + "\n" + ret[1]
+    @@message = ret[0] + "\n" + ret[1]
     erb :zhyMenu
 end
 
@@ -108,7 +108,7 @@ post '/suspend' do
     vm = ZhyVirt.new()
     ret = vm.zhySuspend(dname)
     @@content = ["post", "suspend"]
-    @mmesage = ret[0] + "\n" + ret[1]
+    @@message = ret[0] + "\n" + ret[1]
     erb :zhyMenu
 end
 
@@ -122,7 +122,7 @@ post '/resume' do
     vm = ZhyVirt.new()
     ret = vm.zhyResume(dname)
     @@content = ["post", "resume"]
-    @mmesage = ret[0] + "\n" + ret[1]
+    @@message = ret[0] + "\n" + ret[1]
     erb :zhyMenu
 end
 
@@ -136,7 +136,7 @@ post '/shutdown' do
     vm = ZhyVirt.new()
     ret = vm.zhyShutdown(dname)
     @@content = ["post", "shutdown"]
-    @mmesage = ret[0] + "\n" + ret[1]
+    @@message = ret[0] + "\n" + ret[1]
     erb :zhyMenu
 end
 
@@ -150,7 +150,7 @@ post '/start' do
     vm = ZhyVirt.new()
     ret = vm.zhyStart(dname)
     @@content = ["post", "start"]
-    @mmesage = ret[0] + "\n" + ret[1]
+    @@message = ret[0] + "\n" + ret[1]
     erb :zhyMenu
 end
 
@@ -164,7 +164,7 @@ post '/reboot' do
     vm = ZhyVirt.new()
     ret = vm.zhyReboot(dname)
     @@content = ["post", "reboot"]
-    @mmesage = ret[0] + "\n" + ret[1]
+    @@message = ret[0] + "\n" + ret[1]
     erb :zhyMenu
 end
 
@@ -178,6 +178,6 @@ post '/destroy' do
     vm = ZhyVirt.new()
     ret = vm.zhyDestroy(dname)
     @@content = ["post", "destroy"]
-    @mmesage = ret[0] + "\n" + ret[1]
+    @@message = ret[0] + "\n" + ret[1]
     erb :zhyMenu
 end
