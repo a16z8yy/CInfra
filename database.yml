@@ -2,6 +2,6 @@ development:
     adapter: mysql2
     database: zhycloud
     host: localhost
-    username: root
-    password:
+    username: yyamakawa
+    password: passw0rd@
     encoding: utf8
