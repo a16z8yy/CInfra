@@ -65,16 +65,14 @@ end
 get '/statusList' do
     vm = ZhyVirt.new()
     ret = vm.zhyStatusList()
-    @@content = "statusList"
+    @@content = ["post", "statusList"]
     @@message = ret[0] + "\n" + ret[1]
     erb :zhyMenu
 end
 
-post '/statusList' do
-
-end
-
 get '/statusSpec' do
+    @@content = ["get", "statusSpec"]
+    erb :zhyMenu
 end
 
 post '/statusSpec' do

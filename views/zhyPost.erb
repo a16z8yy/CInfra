@@ -1,0 +1,9 @@
+<% @@content[0] = "get" %>
+<% if @@content[1] == "statusList" %>
+<%=   erb :zhyStatusList %>
+<% elsif @@content[1] == "statusSpec" %>
+<%    @@message = "Status Spec ...." %>
+<%=   erb :zhyStatusSpec %>
+<% else %>
+<%=  "Welcome to ZhyCloud system!" %>
+<% end %>
