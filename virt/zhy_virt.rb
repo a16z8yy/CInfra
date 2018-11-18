@@ -66,6 +66,25 @@ class ZhyVirt
         cmd = "virsh --connect=qemu:///system destroy " + vm
         return virCmd(cmd)
     end
+    
+    def zhyCreateVM(vm)
+        cmd = "virsh --connect qemu:///system define /var/kvm/disk/centos7-tmp.xml"
+        ret1 = virCmd(cmd)
+        if ret1[0] == "Err"
+            return ["Err", "... Define Err"]
+        end
+        cmd = "virt-clone --connect qemu:///system --original centos7-tmp --name " + vm + " --file /var/kvm/disk/" + vm + ".img"
+        ret2 = virCmd(cmd)
+        if ret2[0] == "Err"
+            return ["Err", "... Clone Err"]
+        end
+        cmd = "virsh --connect qemu:///system undefine centos7-tmp"
+        ret1 = virCmd(cmd)
+        if ret1[0] == "Err"
+            return ["Err", "... undefine Err"]
+        end
+        return ret2
+    end
 end
 
 
@@ -77,13 +96,17 @@ if __FILE__ == $0
 
     i = ""
     while i != "0"
-        puts "Input vm name: "
-        input = gets.strip
         puts "Input cmd: "
         puts "1. dominfo     2. suspend    3. resume"
         puts "4. shutdown    5. start      6. reboot"
-        puts "7. destroy     8. status     0. quit"
+        puts "7. destroy     8. status     0. create"
+        puts "0. quit        a. stustlist"
         i = gets.strip
+        if i == "0"
+            return
+        end
+        puts "Input vm name: "
+        input = gets.strip
         if i == "1"
             ret = vm.zhyDomInfo(input)
         elsif i == "2"
@@ -100,6 +123,10 @@ if __FILE__ == $0
             ret = vm.zhyDestroy(input)
         elsif i == "8"
             ret = vm.zhyStatusVM(input)
+        elsif i == "9"
+            tid = Thread.new { vm.zhyCreateVM(input) }
+        elsif i == "a"
+            ret = vm.zhyStatusList()
         else
             puts "key in 1..9"
         end

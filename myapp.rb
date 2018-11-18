@@ -4,6 +4,7 @@ require 'mysql2'
 require 'sinatra'
 #require 'rss'
 require './virt/zhy_virt'
+require 'securerandom'
 
 # DB設定ファイルの読み込み
 ActiveRecord::Base.configurations = YAML.load_file('database.yml')
@@ -179,5 +180,28 @@ post '/destroy' do
     ret = vm.zhyDestroy(dname)
     @@content = ["post", "destroy"]
     @@message = ret[0] + "\n" + ret[1]
+    erb :zhyMenu
+end
+
+get '/centos7' do
+    @@content = ["get", "centos7"]
+    erb :zhyMenu
+end
+
+def macAddr 
+    mac = [0x52, 0x42, 0x00, Random.rand(0x7f), Random.rand(0xff), Random.rand(0xff)]
+    returen (["%02x"] * 6).join(":")% mac
+end
+
+def uuidGen
+    return SecureRandom.uuid
+end
+
+post '/centos7' do
+    dname = params[:domName].strip
+    vm = ZhyVirt.new()
+    vm.zhyCreateVM(dname)
+    @@content = ["post", "centos7"]
+    @@message = "MAC address : " + macAddr + "\n" + "UUID : " + uuidGen
     erb :zhyMenu
 end
