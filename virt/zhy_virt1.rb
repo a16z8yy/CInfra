@@ -96,13 +96,13 @@ if __FILE__ == $0
 
     i = ""
     while i != "0"
-        input = gets.strip
         puts "Input cmd: "
         puts "1. dominfo     2. suspend    3. resume"
         puts "4. shutdown    5. start      6. reboot"
         puts "7. destroy     8. status     9. create"
         puts "0. quit"
         i = gets.strip
+        input = gets.strip
         puts "Input vm name: "
         if i == "1"
             ret = vm.zhyDomInfo(input)
