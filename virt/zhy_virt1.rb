@@ -68,7 +68,7 @@ class ZhyVirt
     end
     
     def zhyCreateVM(vm)
-        cmd = "virsh --connect qemu:///system define /var/kvm/disk/centos7-2.xml"
+        cmd = "virsh --connect qemu:///system define /var/kvm/disk/centos7-tmp.xml"
         ret1 = virCmd(cmd)
         if ret1[0] == "Err"
             return ["Err", "... Define Err"]
@@ -102,6 +102,9 @@ if __FILE__ == $0
         puts "7. destroy     8. status     9. create"
         puts "0. quit"
         i = gets.strip
+        if i == "0"
+            return
+        end
         puts "Input vm name: "
         input = gets.strip
         if i == "1"
