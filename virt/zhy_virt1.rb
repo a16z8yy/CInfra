@@ -124,9 +124,9 @@ if __FILE__ == $0
         elsif i == "8"
             ret = vm.zhyStatusVM(input)
         elsif i == "9"
-            ret = vm.zhyCreateVM(input)
+            tid = Thread.new { vm.zhyCreateVM(input) }
         elsif i == "a"
-            tid = Thread.new { vm.zhyStatusList() }
+            ret = vm.zhyStatusList()
         else
             puts "key in 1..9"
         end
