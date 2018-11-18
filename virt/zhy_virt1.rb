@@ -73,7 +73,7 @@ class ZhyVirt
         if ret1[0] == "Err"
             return ["Err", "... Define Err"]
         end
-        cmd = "virt-clone --connect qemu:///system --original centos7-tmp --name " + vm + " --file /var/kvm/disk/centos7-tmp.img"
+        cmd = "virt-clone --connect qemu:///system --original centos7-tmp --name " + vm + " --file /var/kvm/disk/" + vm + ".img"
         ret2 = virCmd(cmd)
         if ret2[0] == "Err"
             return ["Err", "... Clone Err"]
