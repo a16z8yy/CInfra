@@ -100,7 +100,7 @@ if __FILE__ == $0
         puts "1. dominfo     2. suspend    3. resume"
         puts "4. shutdown    5. start      6. reboot"
         puts "7. destroy     8. status     9. create"
-        puts "0. quit"
+        puts "0. quit        a. stustlist"
         i = gets.strip
         if i == "0"
             return
@@ -125,6 +125,8 @@ if __FILE__ == $0
             ret = vm.zhyStatusVM(input)
         elsif i == "9"
             ret = vm.zhyCreateVM(input)
+        elsif i == "a"
+            tid = Thread.new { vm.zhyStatusList() }
         else
             puts "key in 1..9"
         end
