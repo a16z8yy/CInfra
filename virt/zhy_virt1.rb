@@ -73,7 +73,7 @@ class ZhyVirt
         if ret1[0] == "Err"
             return ["Err", "... Define Err"]
         end
-        cmd = "virt-clone --connect qemu:///system --original centos7-tmp --name" + vm + " --file /var/kvm/disk/centos7-tmp.img"
+        cmd = "virt-clone --connect qemu:///system --original centos7-tmp --name " + vm + " --file /var/kvm/disk/centos7-tmp.img"
         ret2 = virCmd(cmd)
         if ret2[0] == "Err"
             return ["Err", "... Clone Err"]
@@ -102,8 +102,8 @@ if __FILE__ == $0
         puts "7. destroy     8. status     9. create"
         puts "0. quit"
         i = gets.strip
-        input = gets.strip
         puts "Input vm name: "
+        input = gets.strip
         if i == "1"
             ret = vm.zhyDomInfo(input)
         elsif i == "2"
