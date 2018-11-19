@@ -103,7 +103,7 @@ if __FILE__ == $0
         puts "0. quit        a. stustlist"
         i = gets.strip
         if i == "0"
-            return
+            exit!
         end
         puts "Input vm name: "
         input = gets.strip
@@ -129,6 +129,7 @@ if __FILE__ == $0
             ret = vm.zhyStatusList()
         else
             puts "key in 1..9"
+            ret["", ""]
         end
         puts ret[0], ret[1]
     end
