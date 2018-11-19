@@ -200,8 +200,10 @@ end
 post '/centos7' do
     dname = params[:domName].strip
     vm = ZhyVirt.new()
-    vm.zhyCreateVM(dname)
+#   vm.zhyCreateVM(dname)
+    tid = Thread.new { vm.zhyCreateVM(dname) }
     @@content = ["post", "centos7"]
     @@message = "MAC address : " + macAddr + "\n" + "UUID : " + uuidGen
     erb :zhyMenu
+    tid.join
 end
