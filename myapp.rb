@@ -205,5 +205,5 @@ post '/centos7' do
     @@content = ["post", "centos7"]
     @@message = "MAC address : " + macAddr + "\n" + "UUID : " + uuidGen
     erb :zhyMenu
-    tid.join
+#   tid.join
 end
