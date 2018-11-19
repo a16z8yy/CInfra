@@ -190,7 +190,7 @@ end
 
 def macAddr 
     mac = [0x52, 0x42, 0x00, Random.rand(0x7f), Random.rand(0xff), Random.rand(0xff)]
-    returen (["%02x"] * 6).join(":")% mac
+    return (["%02x"] * 6).join(":")% mac
 end
 
 def uuidGen
