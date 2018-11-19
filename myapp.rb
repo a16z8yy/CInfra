@@ -59,7 +59,7 @@ post '/login' do
    end
 end
 
-get '/Signin' do
+get '/signin' do
   erb :signin
 end
 
