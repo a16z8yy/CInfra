@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<meta name="author" content="">
+
+<title>login</title>
+
+<!-- Bootstrap Core CSS -->
+<link href="css/bootstrap.css" rel="stylesheet">
+
+<!-- MetisMenu CSS -->
+<link href="css/metisMenu.css" rel="stylesheet">
+
+<!-- Custom CSS -->
+<link href="css/sb-admin-2.css" rel="stylesheet">
+
+<!-- Custom Fonts -->
+<link href="css/font-awesome.css" rel="stylesheet" type="text/css">
+
+<!-- jQuery -->
+<script src="/js/jquery-2.2.4.js"></script>
+
+<script>
+	//ユーザ認証処理
+	function logincheck() {
+		//アドレスloginのservletに送信
+		$.ajax({
+			url : '/api/login',
+			type : 'POST',
+			cache : false,
+			timeout : 6000,
+			data : {
+				//パラメータ
+				username : $("input[name='username']").val(),
+				password : $("input[name='password']").val()
+			}
+		//通信成功すると
+		}).done(function(data) { 
+			
+			//バックグラウンドからの返信データとパスワード一致なら
+			if (data == true) {
+				
+				//メイン画面に遷移
+				window.location.href = "index";
+			}
+			
+		//通信失敗なら
+		 }).fail(function() {			
+			//エラーメッセージを出る
+			alert("error!");
+		}); 
+	};
+</script>
+
+</head>
+
+<body>
+
+	<div class="container">
+		<div class="row">
+			<div class="col-md-4 col-md-offset-4">
+				<div class="login-panel panel panel-default">
+					<div class="panel-heading">
+						<h3 class="panel-title">could</h3>
+					</div>
+					<div class="panel-body">
+							<fieldset>
+								<div class="form-group">
+
+									<!--ユーザ名  -->
+									<input class="form-control" placeholder="username"
+										name="username" type="text" autofocus>
+								</div>
+								<div class="form-group">
+
+									<!--パスワード  -->
+									<input class="form-control" placeholder="Password"
+										name="password" type="password" value="">
+								</div>
+								<!-- Change this to a button or input when using this as a form -->
+								<button class="btn btn-lg btn-success btn-block" onclick="logincheck()">Login</button>
+							</fieldset>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- jQuery -->
+
+	<!-- Bootstrap Core JavaScript -->
+	<script src="js/bootstrap.js"></script>
+
+	<!-- Metis Menu Plugin JavaScript -->
+	<script src="js/metisMenu.js"></script>
+
+	<!-- Custom Theme JavaScript -->
+	<script src="js/sb-admin-2.js"></script>
+
+</body>
+
+</html>

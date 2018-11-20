@@ -1,0 +1,148 @@
+
+<!DOCTYPE html>
+<html lang="jp" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="" />
+<meta name="author" content="" />
+
+<link href="/css/common.css" rel="stylesheet">
+<script src="/js/jquery-2.2.4.js"></script>
+
+<script type="text/javascript">
+	function loadData() {
+		$
+				.ajax({
+					url : '/api/getinstance',
+					type : 'POST',
+					cache : false,
+					timeout : 6000,
+					data : {}
+				//通信成功すると
+				})
+				.done(
+						function(data) {
+							//ip_address
+							var trs = "";
+							var list = [ "初期化中", "実行中", "シャットオフ中", "シャットオフ",
+									"一時停止" ];
+							for (i = 0; i < data.length; i++) {
+								trs += "<tr><td>"
+										+ data[i]["instance_id"]
+										+ "</td> <td>"
+										+ data[i]["instance_name"]
+										+ "</td> <td>"
+										+ list[data[i]["instance_status"]]
+										+ "</td> <td>"
+										+ list[data[i]["ip_address"]]
+										+ "</td> <td>"
+										+ data[i]["create_date"].substring(0,
+												19)
+										+ "</td>"
+										//+ data[i]["PARENT"] + "</td>"
+										+ "<td style='width:250px'><button class='btn btn-info' onclick='commandFun.action(this)'>start</button><button class='btn btn-info' onclick='commandFun.action(this)'>stop</button><button class='btn btn-info' onclick='commandFun.action(this)'>suspend</button></td></tr>";
+							}
+							$("#tbody").html(trs);
+							//通信失敗なら
+						}).fail(function() {
+					//エラーメッセージを出る
+					alert("error!");
+				});
+	}
+
+	$(function() {
+		//
+		loadData();
+
+	});
+	var cmd;
+	var vmname;
+	var commandFun = {
+		action : function(o) {
+			$("#messageDiv").show();
+			cmd = $(o).html();
+			vmname = $(o).parent().parent().children("td").eq(1).html();
+		},
+		confirmAction : function() {
+			$.ajax({
+				url : '/api/sendcmd',
+				type : 'POST',
+				cache : false,
+				timeout : 6000,
+				data : {
+					command : cmd,
+					vmname : vmname
+				}
+			//通信成功すると
+			}).done(function(data) {
+				//
+				if (data.length > 0) {
+					alert("sucess!");
+				}
+
+				//通信失敗なら
+			}).fail(function() {
+				//エラーメッセージを出る
+				alert("error!");
+			});
+			$("#messageDiv").hide();
+		},
+		closeWin :function(){
+			$("#messageDiv").hide();
+		}
+	}
+</script>
+
+<title>InsList</title>
+
+</head>
+<body>
+	<!-- Page Content -->
+	<div class="row">
+		<div class="col-lg-12">
+			<h1 class="page-header">仮想マシン一覧</h1>
+		</div>
+		<!-- /.col-lg-12 -->
+	</div>
+
+	<table id="table"
+		class="table table-striped table-bordered table-hover">
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>マシン名</th>
+				<th>状態</th>
+				<th>ipaddress</th>
+				<th>作成時間</th>
+				<th>操作</th>
+			</tr>
+		</thead>
+		<tbody id="tbody">
+			<tr>
+				<td>1</td>
+				<td>1</td>
+				<td>1</td>
+				<td>1</td>
+				<td style="width: 200px"><button class="btn btn-info">変更</button>
+					<button class="btn btn-info">削除</button></td>
+			<tr>
+		</tbody>
+	</table>
+	<button class="btn btn-info" onclick="loadData();">refresh</button>
+
+	<div id="messageDiv" class="modelMess" style="width: 400px; height: 300px">
+		<div id="message" style="padding-top: 100px;">よろしいですか？</div>
+		<div>
+			<button class="btn btn-info" onclick="commandFun.confirmAction()">OK</button>
+			</td>
+			<button class="btn btn-info" onclick="commandFun.closeWin()">Cancel</button>
+			</td>
+		</div>
+	</div>
+</body>
+</html>
